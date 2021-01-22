@@ -1,10 +1,23 @@
+import { HomeComponent } from './home/home.component';
+import { SunsetComponent } from './sunset/sunset.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SunriseComponent } from './sunrise/sunrise.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'sunrise', component: SunriseComponent },
+  { path: 'sunset', component: SunsetComponent },
+  //redirects
+  { path: 'sunrise', redirectTo: '/sunrises', pathMatch: 'full' },
+  { path: 'sunset', redirectTo: '/sunsets', pathMatch: 'full' },
+  //** = wildcard - catch all bad routes and redirect them to the not found page
+  { path: '**', component: PageNotFoundComponent } //order matters
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
