@@ -10,8 +10,9 @@ const routes: Routes = [
   { path: 'sunrise', component: SunriseComponent },
   { path: 'sunset', component: SunsetComponent },
   //redirects
-  { path: 'sunrise', redirectTo: '/sunrises', pathMatch: 'full' },
-  { path: 'sunset', redirectTo: '/sunsets', pathMatch: 'full' },
+  { path: 'sunrises', redirectTo: '/sunrise', pathMatch: 'full' },
+  { path: 'sunsets', redirectTo: '/sunset', pathMatch: 'full' },
+
   //** = wildcard - catch all bad routes and redirect them to the not found page
   { path: '**', component: PageNotFoundComponent } //order matters
 ];
