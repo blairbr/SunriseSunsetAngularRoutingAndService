@@ -1,5 +1,5 @@
 import { LocalSunriseTimesService } from './../local-sunrise-times.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sunrise',
@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sunrise.component.css']
 })
 export class SunriseComponent implements OnInit {
-  
+  @Input() timesResponseObject: any;
+
   constructor(public service : LocalSunriseTimesService) { }
 
   ngOnInit(): void {
