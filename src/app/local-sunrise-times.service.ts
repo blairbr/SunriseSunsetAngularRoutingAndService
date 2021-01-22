@@ -11,20 +11,16 @@ interface SunriseSunsetTimes {
   providedIn: 'root',
 })
 export class LocalSunriseTimesService {
-  //create a timeResponseObjectHere and an interface for it above.
-
-
   urlString: string =
     'https://api.sunrise-sunset.org/json?lat=42.33143&lng=-83.04575';
+  public timesResponseObject: SunriseSunsetTimes;
 
   constructor(private http: HttpClient) {}
-
-  public timesResponseObject : SunriseSunsetTimes;
 
   getSunriseSunsetTimes() {
     return this.http.get(this.urlString).subscribe(
       (data: any) => {
-        const timesResponseObject: SunriseSunsetTimes = {
+        this.timesResponseObject = {
           sunrise: data.results.sunrise,
           sunset: data.results.sunset,
           daylength: data.results.daylength,
